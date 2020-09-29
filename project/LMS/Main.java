@@ -277,17 +277,17 @@ public class Main
         lib.setName("FAST Library");
         
         // Making connection with Database.
-        Connection con = lib.makeConnection();
+//        Connection con = lib.makeConnection();
         
-        if (con == null)    // Oops can't connnect !
-        {
-          System.out.println("\nError connecting to Database. Exiting.");
-           return;
-       }
+//        if (con == null)    // Oops can't connnect !
+//        {
+//          System.out.println("\nError connecting to Database. Exiting.");
+//           return;
+//       }
         
         try {
 
-       lib.populateLibrary(con);   // Populating Library with all Records
+//       lib.populateLibrary(con);   // Populating Library with all Records
          
         boolean stop = false;
         while(!stop)
@@ -332,7 +332,7 @@ public class Main
 
                         System.out.println("---------------------------------------------");
 
-                        choice = takeInput(0,3);
+                        choice = takeInput(0,4);
 
                         if (choice == 3)
                             break;
@@ -462,7 +462,7 @@ public class Main
         }
         
         //Loading back all the records in database
-        lib.fillItBack(con);
+//        lib.fillItBack(con);
         }
         catch(Exception e)
         {
