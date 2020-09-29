@@ -452,31 +452,9 @@ public class Library {
         {
             System.out.println("\nInvalid Input.");
         }
-            
-        //If clerk is to be created
-        if (x == 'c')
-        {
-            double salary = 0;
-            
-            try{
-                System.out.println("Enter Salary: ");
-                salary = sc.nextDouble();
-            }
-            catch (java.util.InputMismatchException e)
-            {
-                System.out.println("\nInvalid Input.");
-            }
-            
-            Clerk c = new Clerk(-1,n,address,phone,salary,-1);            
-            addClerk(c);
-            
-            System.out.println("\nClerk with name " + n + " created successfully.");
-            System.out.println("\nYour ID is : " + c.getID());
-            System.out.println("Your Password is : " + c.getPassword());
-        }
-        
+
         //If librarian is to be created
-        else if (x == 'l')
+         if (x == 'l')
         {
             double salary = 0;            
             try{
