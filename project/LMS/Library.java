@@ -204,86 +204,7 @@ public class Library {
         booksInLibrary.add(b);
     }
     
-    //When this function is called, only the pointer of the book placed in booksInLibrary is removed. But the real object of book
-    //is still there in memory because pointers of that book placed in IssuedBooks and ReturnedBooks are still pointing to that book. And we
-    //are maintaining those pointers so that we can maintain history.
-    //But if we donot want to maintain history then we can delete those pointers placed in IssuedBooks and ReturnedBooks as well which are
-    //pointing to that book. In this way the book will be really removed from memory.
-    public void removeBookfromLibrary(Book b)  
-    {
-        boolean delete = true;
-        
-        //Checking if this book is currently borrowed by some borrower
-        for (int i = 0; i < persons.size() && delete; i++)
-        {
-            if (persons.get(i).getClass().getSimpleName().equals("Borrower"))
-            {
-                ArrayList<Loan> borBooks = ((Borrower)(persons.get(i))).getBorrowedBooks();
-                
-                for (int j = 0; j < borBooks.size() && delete; j++)
-                {
-                    if (borBooks.get(j).getBook() == b)
-                    {
-                        delete = false;
-                        System.out.println("This particular book is currently borrowed by some borrower.");
-                    }
-                }              
-            }
-        }
-        
-        if (delete)
-        {
-            System.out.println("\nCurrently this book is not borrowed by anyone.");
-            ArrayList<HoldRequest> hRequests = b.getHoldRequests();
-            
-            if(!hRequests.isEmpty())
-            {
-                System.out.println("\nThis book might be on hold requests by some borrowers. Deleting this book will delete the relevant hold requests too.");
-                System.out.println("Do you still want to delete the book? (y/n)");
-                
-                Scanner sc = new Scanner(System.in);
-                
-                while (true)
-                {
-                    String choice = sc.next();
-                    
-                    if(choice.equals("y") || choice.equals("n"))
-                    {
-                        if(choice.equals("n"))
-                        {
-                            System.out.println("\nDelete Unsuccessful.");
-                            return;
-                        }                            
-                        else
-                        {
-                            //Empty the books hold request array
-                            //Delete the hold request from the borrowers too
-                            for (int i = 0; i < hRequests.size() && delete; i++)
-                            {
-                                HoldRequest hr = hRequests.get(i);
-                                hr.getBorrower().removeHoldRequest(hr);
-                                b.removeHoldRequest();                                                                
-                            }
-                        }
-                    }
-                    else
-                        System.out.println("Invalid Input. Enter (y/n): ");
-                }
-                
-            }
-            else
-                System.out.println("This book has no hold requests.");
-                
-            booksInLibrary.remove(b);
-            System.out.println("The book is successfully removed.");
-        }
-        else
-            System.out.println("\nDelete Unsuccessful.");
-    }
-    
-    
-    
-    // Searching Books on basis of title, Subject or Author 
+   
     public ArrayList<Book> searchForBooks() throws IOException
     {
         String choice;
@@ -485,6 +406,7 @@ public class Library {
             }
             catch (java.util.InputMismatchException e)
             {
+                System.out.println(e);
                 System.out.println("\nInvalid Input.");
             }
             
