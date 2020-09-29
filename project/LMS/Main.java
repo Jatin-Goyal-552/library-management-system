@@ -75,7 +75,7 @@ public class Main
             }
         }
         
-        //View borrower's personal information
+       /* //View borrower's personal information
         else if (choice == 3)
         {
             if("Clerk".equals(person.getClass().getSimpleName()) || "Librarian".equals(person.getClass().getSimpleName()))
@@ -88,9 +88,9 @@ public class Main
             else
                 person.printInfo();
         }
-        
+        */
         //Compute Fine of a Borrower
-        else if (choice == 4)
+        else if (choice == 3)
         {
             if("Clerk".equals(person.getClass().getSimpleName()) || "Librarian".equals(person.getClass().getSimpleName()))
             {
@@ -110,7 +110,7 @@ public class Main
         }
         
         //Check hold request queue of a book
-        else if (choice == 5)
+        else if (choice == 4)
         {
             ArrayList<Book> books = lib.searchForBooks();
             
@@ -122,7 +122,7 @@ public class Main
         }
                        
         //Issue a Book
-        else if (choice == 6)
+        else if (choice == 5)
         {
             ArrayList<Book> books = lib.searchForBooks();
 
@@ -141,7 +141,7 @@ public class Main
         }        
 
         //Return a Book
-        else if (choice == 7)
+        else if (choice == 6)
         {
             Borrower bor = lib.findBorrower();
 
@@ -162,44 +162,15 @@ public class Main
             }
         }        
 
-        //Renew a Book
-        else if (choice == 8)
-        {
-            Borrower bor = lib.findBorrower();
-
-            if(bor!=null)
-            {
-                bor.printBorrowedBooks();
-                ArrayList<Loan> loans = bor.getBorrowedBooks();
-                
-                if (!loans.isEmpty())
-                {
-                    input = takeInput(-1,loans.size());
- 
-                    loans.get(input).renewIssuedBook(new java.util.Date()); 
-                }
-                else
-                    System.out.println("\nThis borrower " + bor.getName() + " has no issued book which can be renewed.");                    
-            }
-        }        
-
+        
         //Add new Borrower
-        else if (choice == 9)
+        else if (choice == 7)
         {
             lib.createPerson('b');
         }        
 
-        //Update Borrower's Personal Info
-        else if (choice == 10)
-        {
-            Borrower bor = lib.findBorrower();
-            
-            if(bor != null)
-                bor.updateBorrowerInfo();
-        }        
-        
-        //Add new Book
-        else if (choice == 11)
+      
+        else if (choice == 8)
         {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -215,47 +186,12 @@ public class Main
             lib.createBook(title, subject, author);
         }        
         
-        //Remove a Book
-        else if (choice == 12)
-        {
-            ArrayList<Book> books = lib.searchForBooks();
-            
-            if (books != null)
-            {
-                input = takeInput(-1,books.size());
-            
-                lib.removeBookfromLibrary(books.get(input));
-            }
-        }        
-
-        //Change a Book's Info
-        else if (choice == 13)
-        {
-            ArrayList<Book> books = lib.searchForBooks();
-            
-            if (books!=null)
-            {
-                input = takeInput(-1,books.size());
-            
-                books.get(input).changeBookInfo();
-            }
-        }        
-            
-        //View clerk's personal information
-        else if (choice == 14)
-        {
-            Clerk clerk = lib.findClerk();
-
-            if(clerk!=null)
-                clerk.printInfo();
-        }
-        
-        // Functionality Performed.
+       
         System.out.println("\nPress any key to continue..\n");
         scanner.next();
     }
     
-    
+
     
     
    
@@ -434,25 +370,23 @@ public class Main
                         System.out.println("--------------------------------------------------------");
                         System.out.println("Following Functionalities are available: \n");
                         System.out.println("1- Search a Book");
-                        System.out.println("2- Place a Book on hold");
-                        System.out.println("3- Check Personal Info of Borrower");
-                        System.out.println("4- Check Total Fine of Borrower");      
-                        System.out.println("5- Check Hold Requests Queue of a Book");                        
-                        System.out.println("6- Check out a Book");
-                        System.out.println("7- Check in a Book");                        
-                        System.out.println("8- Renew a Book");
-                        System.out.println("9- Add a new Borrower");
-                        System.out.println("10- Update a Borrower's Info");
-                        System.out.println("11- Add new Book");
-                        System.out.println("12- Remove a Book");
-                        System.out.println("13- Change a Book's Info");
-                        System.out.println("14- Check Personal Info of Clerk");                        
-                        System.out.println("15- Logout");
+                       System.out.println("2- Place a Book on hold");
+                      
+                        System.out.println("3- Check Total Fine of Borrower");      
+                       System.out.println("4- Check Hold Requests Queue of a Book");                        
+                        System.out.println("5- Check out a Book");
+                        System.out.println("6- Check in a Book");                        
+                     
+                        System.out.println("7- Add a new Borrower");
+                       
+                        System.out.println("8- Add new Book");
+                                     
+                        System.out.println("9- Logout");
                         System.out.println("--------------------------------------------------------");
                         
-                        choice = takeInput(0,16);
+                        choice = takeInput(0,10);
 
-                        if (choice == 15)
+                        if (choice == 9)
                             break;
                                                
                         allFunctionalities(person,choice);                        
