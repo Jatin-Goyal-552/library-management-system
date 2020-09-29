@@ -75,21 +75,7 @@ public class Main
             }
         }
         
-       /* //View borrower's personal information
-        else if (choice == 3)
-        {
-            if("Clerk".equals(person.getClass().getSimpleName()) || "Librarian".equals(person.getClass().getSimpleName()))
-            {
-                Borrower bor = lib.findBorrower();
-                
-                if(bor!=null)
-                    bor.printInfo();
-            }
-            else
-                person.printInfo();
-        }
-        */
-        //Compute Fine of a Borrower
+       
         else if (choice == 3)
         {
             if("Clerk".equals(person.getClass().getSimpleName()) || "Librarian".equals(person.getClass().getSimpleName()))
@@ -262,30 +248,17 @@ public class Main
                         System.out.println("--------------------------------------------------------");
                         System.out.println("Following Functionalities are available: \n");
 
-                        System.out.println("1- Add Clerk");
-                        System.out.println("2- Add Librarian"); 
-                        System.out.println("3- View Issued Books History");  
-                        System.out.println("4- View All Books in Library"); 
-                        System.out.println("5- Logout"); 
-
+                       System.out.println("1- Add Librarian");
+                        System.out.println("2- View All Books in Library");
+                        System.out.println("3- Logout");
                         System.out.println("---------------------------------------------");
-
-                        choice = takeInput(0,6);
-
-                        if (choice == 5)
-                            break;
-
-                        if (choice == 1)
-                            lib.createPerson('c');
+                        choice = takeInput(0,4);
+                        if (choice == 3)
+                               break;
                         else if (choice == 2)
-                            lib.createPerson('l');
-
-                        else if (choice == 3)
-                            lib.viewHistory();
-
-                        else if (choice == 4)
                             lib.viewAllBooks();
-                        
+                        if (choice == 1)  
+                            lib.createPerson('l');
                         System.out.println("\nPress any key to continue..\n");
                         admin.next();                        
                     }
