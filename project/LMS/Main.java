@@ -326,30 +326,22 @@ public class Main
                         System.out.println("--------------------------------------------------------");
                         System.out.println("Following Functionalities are available: \n");
 
-                        System.out.println("1- Add Clerk");
-                        System.out.println("2- Add Librarian"); 
-                        System.out.println("3- View Issued Books History");  
-                        System.out.println("4- View All Books in Library"); 
-                        System.out.println("5- Logout"); 
+                        System.out.println("1- Add Librarian");
+                        System.out.println("2- View All Books in Library");
+                        System.out.println("3- Logout");
 
                         System.out.println("---------------------------------------------");
 
-                        choice = takeInput(0,6);
+                        choice = takeInput(0,3);
 
-                        if (choice == 5)
+                        if (choice == 3)
                             break;
 
                         if (choice == 1)
-                            lib.createPerson('c');
-                        else if (choice == 2)
                             lib.createPerson('l');
-
-                        else if (choice == 3)
-                            lib.viewHistory();
-
-                        else if (choice == 4)
+                        else if (choice == 2)
                             lib.viewAllBooks();
-                        
+
                         System.out.println("\nPress any key to continue..\n");
                         admin.next();                        
                     }
